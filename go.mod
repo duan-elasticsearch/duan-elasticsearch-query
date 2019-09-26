@@ -1,4 +1,4 @@
-module github.com/duan-elasticsearch/duan-elasticsearch/v5/search
+module github.com/duan-elasticsearch/duan-elasticsearch/v5/query
 
 go 1.13
 
