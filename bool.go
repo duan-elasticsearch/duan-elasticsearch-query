@@ -1,4 +1,4 @@
-package query
+package duan_elasticsearch_query
 
 type Bool struct {
 	Must *[]Subnode `json:"must,omitempty"`
