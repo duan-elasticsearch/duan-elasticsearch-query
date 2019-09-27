@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"encoding/json"
 
-	"github.com/duan-elasticsearch/duan_elasticsearch/v5/query"
+	query "github.com/duan-elasticsearch/duan_elasticsearch_query/v5"
 )
 
 type Userinfo struct {
