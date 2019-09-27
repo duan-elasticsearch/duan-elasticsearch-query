@@ -7,5 +7,5 @@ type Subnode struct {
 	Match interface{} `json:"match,omitempty"`
 	MatchPhrase interface{} `json:"match_phrase,omitempty"`
 	MatchAll interface{} `json:"match_all,omitempty"`
-	Range: interface{} `json:"range,omitempty"`
+	Range interface{} `json:"range,omitempty"`
 }
