@@ -1,16 +1,10 @@
 package query
 
 import (
+	// "fmt"
 	"reflect"
+	"github.com/goinggo/mapstructure"
 )
-
-type HitsNode struct {
-	Index string `json:"_index,omitempty"`
-	Type string `json:"_type,omitempty"`
-	Id string `json:"_id,omitempty"`
-	Score float64 `json:"_score,omitempty"`
-	Source interface{} `json:"_source,omitempty"`
-}
 
 type QueryResponse struct {
 	Took int64 `json:"took,omitempty"`
@@ -23,10 +17,24 @@ type QueryResponse struct {
 	Hits struct {
 		Total int64 `json:"total,omitempty"`
 		MaxScore float64 `json:"max_score,omitempty"`
-		Hits interface{} `json:"hits,omitempty"`
+		Hits []struct {
+			Index string `json:"_index,omitempty"`
+			Type string `json:"_type,omitempty"`
+			Id string `json:"_id,omitempty"`
+			Score float64 `json:"_score,omitempty"`
+			Source interface{} `json:"_source,omitempty"`
+		} `json:"hits,omitempty"`
 	} `json:"hits,omitempty"`
 }
 
-func BuildHitsNodeSlice (demo interface{}) (res []HitsNode) {
-	res = reflect.MakeSlice (reflect.TypeOf (demo), 0, 0).New ().Interface ()
+func (self *QueryResponse) CoverSource (demoType reflect.Type) {
+	for numDemo, oneDemo := range self.Hits.Hits {
+		tmpObj := reflect.New (demoType).Interface ()
+		switch oneDemo.Source.(type) {
+
+		case map[string]interface{}:
+			mapstructure.Decode (oneDemo.Source, tmpObj)
+			self.Hits.Hits[numDemo].Source = tmpObj
+		}
+	}
 }
