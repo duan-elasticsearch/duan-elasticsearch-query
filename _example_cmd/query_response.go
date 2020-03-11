@@ -1,10 +1,11 @@
-package query
+package main
 
 import (
 	"fmt"
-	"testing"
 	"reflect"
 	"encoding/json"
+
+	"github.com/duan-elasticsearch/duan_elasticsearch_query/v7"
 )
 
 var test_res = `{
@@ -74,8 +75,8 @@ type PasswdCrackType struct {
 	Value string `json:"value,omitempty"`
 }
 
-func TestBuildHitsNodeSlice (t *testing.T) {
-	resObj := GetResponseObj (reflect.TypeOf (PasswdCrackType{}))
+func main () {
+	resObj := query.GetResponseObj (reflect.TypeOf (PasswdCrackType{}))
 
 	if err := json.Unmarshal ([]byte (test_res), resObj); err != nil {
 		panic (err)

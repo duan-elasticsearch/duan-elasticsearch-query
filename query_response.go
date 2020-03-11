@@ -3,8 +3,21 @@ package query
 import (
 	// "fmt"
 	"reflect"
-	"github.com/goinggo/mapstructure"
 )
+
+type QueryResponseHitsHitsDemoStruct struct {
+	Index string `json:"_index,omitempty"`
+	Type string `json:"_type,omitempty"`
+	Id string `json:"_id,omitempty"`
+	Score float64 `json:"_score,omitempty"`
+	Source interface{} `json:"_source,omitempty"`
+}
+
+type QueryResponseHitsDemoStruct struct {
+	Total int64 `json:"total,omitempty"`
+	MaxScore float64 `json:"max_score,omitempty"`
+	Hits interface {} `json:"hits,omitempty"`
+}
 
 type QueryResponse struct {
 	Took int64 `json:"took,omitempty"`
@@ -14,27 +27,24 @@ type QueryResponse struct {
 		Successful int64 `json:"successful,omitempty"`
 		Failed int64 `json:"failed,omitempty"`
 	} `json:"_shards,omitempty"`
-	Hits struct {
-		Total int64 `json:"total,omitempty"`
-		MaxScore float64 `json:"max_score,omitempty"`
-		Hits []struct {
-			Index string `json:"_index,omitempty"`
-			Type string `json:"_type,omitempty"`
-			Id string `json:"_id,omitempty"`
-			Score float64 `json:"_score,omitempty"`
-			Source interface{} `json:"_source,omitempty"`
-		} `json:"hits,omitempty"`
-	} `json:"hits,omitempty"`
+	Hits QueryResponseHitsDemoStruct `json:"hits,omitempty"`
 }
 
-func (self *QueryResponse) CoverSource (demoType reflect.Type) {
-	for numDemo, oneDemo := range self.Hits.Hits {
-		tmpObj := reflect.New (demoType).Interface ()
-		switch oneDemo.Source.(type) {
-
-		case map[string]interface{}:
-			mapstructure.Decode (oneDemo.Source, tmpObj)
-			self.Hits.Hits[numDemo].Source = tmpObj
-		}
+func GetResponseObj (demoType reflect.Type) (res *QueryResponse) {
+	tmpHitsDemoObj := QueryResponseHitsHitsDemoStruct {
+		Source: reflect.New (demoType).Interface (),
 	}
+	tmpHitsDemoObjValue := reflect.ValueOf (tmpHitsDemoObj)
+
+	tmpHitsDemoSliceType := reflect.SliceOf (tmpHitsDemoObjValue.Type ())
+
+	tmpHitsSliceValue := reflect.MakeSlice (tmpHitsDemoSliceType, 0, 0)
+
+	res = &QueryResponse {
+		Hits: QueryResponseHitsDemoStruct {
+			Hits: tmpHitsSliceValue.Interface (),
+		},
+	}
+
+	return
 }
