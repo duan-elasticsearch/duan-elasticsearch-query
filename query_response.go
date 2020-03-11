@@ -19,7 +19,7 @@ type QueryResponseHitsDemoStruct struct {
 		Relation string `json:"relation,omitempty"`
 	}
 	MaxScore float64 `json:"max_score,omitempty"`
-	Hits interface {} `json:"hits,omitempty"`
+	Hits []QueryResponseHitsHitsDemoStruct `json:"hits,omitempty"`
 }
 
 type QueryResponse struct {
@@ -45,7 +45,7 @@ func GetResponseObj (demoType reflect.Type) (res *QueryResponse) {
 
 	res = &QueryResponse {
 		Hits: QueryResponseHitsDemoStruct {
-			Hits: tmpHitsSliceValue.Interface (),
+			Hits: tmpHitsSliceValue.Interface ().([]QueryResponseHitsHitsDemoStruct),
 		},
 	}
 
