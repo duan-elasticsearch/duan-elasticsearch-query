@@ -64,7 +64,9 @@ func main () {
 
 	fmt.Println (resObj)
 	resObj.CoverSource (reflect.TypeOf (TestType {}))
+
 	fmt.Println (resObj)
+	fmt.Println (resObj.Hits.Hits[0].Source)
 	fmt.Println (resObj.Hits.Hits[0].SourceObj.(*TestType).Content)
 	fmt.Println (resObj.Hits.Hits[0].SourceObj.(*TestType).FilePath)
 }

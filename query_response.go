@@ -26,7 +26,7 @@ type QueryResponse struct {
 			Id string `json:"_id,omitempty"`
 			Score float64 `json:"_score,omitempty"`
 			Source json.RawMessage `json:"_source,omitempty"`
-			SourceObj interface{} `json:"-"`
+			SourceObj interface{} `json:"_source_obj,omitempty"`
 		} `json:"hits,omitempty"`
 	} `json:"hits,omitempty"`
 }
@@ -37,6 +37,7 @@ func (self *QueryResponse) CoverSource (demoType reflect.Type) (err error) {
 		if err = json.Unmarshal (oneData.Source, self.Hits.Hits[oneDataNum].SourceObj); err != nil {
 			return
 		}
+		self.Hits.Hits[oneDataNum].Source = []byte{};
 	}
 
 	return

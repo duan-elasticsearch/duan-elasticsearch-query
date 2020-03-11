@@ -76,4 +76,5 @@ func TestBuildHitsNodeSlice (t *testing.T) {
 	fmt.Println (resObj)
 	fmt.Println (resObj.Hits.Hits[0].SourceObj.(*TestType).Content)
 	fmt.Println (resObj.Hits.Hits[0].SourceObj.(*TestType).FilePath)
+	fmt.Println (resObj.Hits.Hits[0].Source)
 }
