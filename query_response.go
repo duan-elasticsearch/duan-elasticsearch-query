@@ -14,7 +14,10 @@ type QueryResponseHitsHitsDemoStruct struct {
 }
 
 type QueryResponseHitsDemoStruct struct {
-	Total int64 `json:"total,omitempty"`
+	Total struct {
+		Value int64 `json:"value,omitempty"`
+		Relation string `json:"relation,omitempty"`
+	}
 	MaxScore float64 `json:"max_score,omitempty"`
 	Hits interface {} `json:"hits,omitempty"`
 }
