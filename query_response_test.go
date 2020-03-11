@@ -59,19 +59,21 @@ var test_res = `
   }
 }
 `
-
-type PasswdCrackType struct {
-	HType string `json:"h_type,omitempty"`
-	Key string `json:"key,omitempty"`
-	Value string `json:"value,omitempty"`
+type TestType struct {
+	FilePath string `json:"file_path,omitempty"`
+	Content string `json:"content,omitempty"`
 }
 
 func TestBuildHitsNodeSlice (t *testing.T) {
-	resObj := GetResponseObj (reflect.TypeOf (PasswdCrackType{}))
+	resObj := QueryResponse {}
 
-	if err := json.Unmarshal ([]byte (test_res), resObj); err != nil {
+	if err := json.Unmarshal ([]byte (test_res), &resObj); err != nil {
 		panic (err)
 	}
 
 	fmt.Println (resObj)
+	resObj.CoverSource (reflect.TypeOf (TestType {}))
+	fmt.Println (resObj)
+	fmt.Println (resObj.Hits.Hits[0].SourceObj.(*TestType).Content)
+	fmt.Println (resObj.Hits.Hits[0].SourceObj.(*TestType).FilePath)
 }
