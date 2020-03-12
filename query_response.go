@@ -18,7 +18,7 @@ type QueryResponse struct {
 		Total struct {
 			Value int64 `json:"value,omitempty"`
 			Relation string `json:"relation,omitempty"`
-		}
+		} `json:"total,omitempty"`
 		MaxScore float64 `json:"max_score,omitempty"`
 		Hits []struct {
 			Index string `json:"_index,omitempty"`
