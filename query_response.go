@@ -6,6 +6,15 @@ import (
 	"encoding/json"
 )
 
+type QueryResponseHitsOne struct {
+	Index string `json:"_index,omitempty"`
+	Type string `json:"_type,omitempty"`
+	Id string `json:"_id,omitempty"`
+	Score float64 `json:"_score,omitempty"`
+	Source json.RawMessage `json:"_source,omitempty"`
+	SourceObj interface{} `json:"_source_obj,omitempty"`
+}
+
 type QueryResponse struct {
 	Took int64 `json:"took,omitempty"`
 	TimedOut bool `json:"timed_out,omitempty"`
@@ -20,14 +29,7 @@ type QueryResponse struct {
 			Relation string `json:"relation,omitempty"`
 		} `json:"total,omitempty"`
 		MaxScore float64 `json:"max_score,omitempty"`
-		Hits []struct {
-			Index string `json:"_index,omitempty"`
-			Type string `json:"_type,omitempty"`
-			Id string `json:"_id,omitempty"`
-			Score float64 `json:"_score,omitempty"`
-			Source json.RawMessage `json:"_source,omitempty"`
-			SourceObj interface{} `json:"_source_obj,omitempty"`
-		} `json:"hits,omitempty"`
+		Hits []QueryResponseHitsOne `json:"hits,omitempty"`
 	} `json:"hits,omitempty"`
 }
 
