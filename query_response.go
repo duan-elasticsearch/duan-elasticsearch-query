@@ -44,3 +44,13 @@ func (self *QueryResponse) CoverSource (demoType reflect.Type) (err error) {
 
 	return
 }
+
+func (self *QueryResponseHitsOne) CoverHitsOne (demoType reflect.Type) (err error) {
+	self.SourceObj = reflect.New (demoType).Interface ()
+	if err = json.Unmarshal (self.Source, self.SourceObj); err != nil {
+		return
+	}
+	self.Source = []byte{};
+
+	return
+}
