@@ -7,9 +7,9 @@ import (
 )
 
 type QueryResponseHitsOne struct {
-	Index string `json:"_index,omitempty"`
-	Type string `json:"_type,omitempty"`
-	Id string `json:"_id,omitempty"`
+	Index string `json:"_index,omitempty" validate:"required"`
+	Type string `json:"_type,omitempty" validate:"required"`
+	Id string `json:"_id,omitempty" validate:"required"`
 	Score float64 `json:"_score,omitempty"`
 	Source json.RawMessage `json:"_source,omitempty"`
 	SourceObj interface{} `json:"_source_obj,omitempty"`
