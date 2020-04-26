@@ -16,51 +16,97 @@ var test_res = `{
     "failed" : 0
   },
   "hits" : {
-    "total" : 4,
-    "max_score" : 0.2876821,
+    "total" : 77,
+    "max_score" : 1.0,
     "hits" : [
       {
-        "_index" : "password",
-        "_type" : "content",
-        "_id" : "1",
-        "_score" : 0.2876821,
+        "_index" : "group_data",
+        "_type" : "telegram",
+        "_id" : "1149938446",
+        "_score" : 1.0,
         "_source" : {
-          "h_type" : "tar",
-          "key" : "par",
-          "value" : "123456789"
+          "create_time" : "1548225148"
         }
       },
       {
-        "_index" : "password",
-        "_type" : "content",
-        "_id" : "3",
-        "_score" : 0.2876821,
+        "_index" : "group_data",
+        "_type" : "telegram",
+        "_id" : "1137152439",
+        "_score" : 1.0,
         "_source" : {
-          "h_type" : "tar",
-          "key" : "par",
-          "value" : "123456789"
+          "create_time" : "1548215545"
         }
       },
       {
-        "_index" : "password",
-        "_type" : "content",
-        "_id" : "2",
-        "_score" : 0.18232156,
+        "_index" : "group_data",
+        "_type" : "telegram",
+        "_id" : "1061707874",
+        "_score" : 1.0,
         "_source" : {
-          "h_type" : "tar",
-          "key" : "par",
-          "value" : "123456789"
+          "create_time" : "1548226144"
         }
       },
       {
-        "_index" : "password",
-        "_type" : "content",
-        "_id" : "4",
-        "_score" : 0.18232156,
+        "_index" : "group_data",
+        "_type" : "telegram",
+        "_id" : "1236310072",
+        "_score" : 1.0,
         "_source" : {
-          "h_type" : "arp",
-          "key" : "dob",
-          "value" : "123456789"
+          "create_time" : "1548219129"
+        }
+      },
+      {
+        "_index" : "group_data",
+        "_type" : "telegram",
+        "_id" : "1326588821",
+        "_score" : 1.0,
+        "_source" : {
+          "create_time" : "1548229190"
+        }
+      },
+      {
+        "_index" : "group_data",
+        "_type" : "telegram",
+        "_id" : "1146738734",
+        "_score" : 1.0,
+        "_source" : {
+          "create_time" : "1548216244"
+        }
+      },
+      {
+        "_index" : "group_data",
+        "_type" : "telegram",
+        "_id" : "1359190838",
+        "_score" : 1.0,
+        "_source" : {
+          "create_time" : "1548176016"
+        }
+      },
+      {
+        "_index" : "group_data",
+        "_type" : "telegram",
+        "_id" : "1149066472",
+        "_score" : 1.0,
+        "_source" : {
+          "create_time" : "1545716748"
+        }
+      },
+      {
+        "_index" : "group_data",
+        "_type" : "telegram",
+        "_id" : "1220111865",
+        "_score" : 1.0,
+        "_source" : {
+          "create_time" : "1548223187"
+        }
+      },
+      {
+        "_index" : "group_data",
+        "_type" : "telegram",
+        "_id" : "1342029169",
+        "_score" : 1.0,
+        "_source" : {
+          "create_time" : "1548174694"
         }
       }
     ]
@@ -69,9 +115,7 @@ var test_res = `{
 `
 
 type PasswdCrackType struct {
-	HType string `json:"h_type,omitempty"`
-	Key string `json:"key,omitempty"`
-	Value string `json:"value,omitempty"`
+	CreateTime string `json:"create_time,omitempty"`
 }
 
 func TestBuildHitsNodeSlice (t *testing.T) {
