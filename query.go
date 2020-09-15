@@ -12,6 +12,6 @@ type Query struct {
 
 	Range interface{} `json:"range,omitempty"`
 
-	SimpleQueryString QueryString `json:"simple_query_string"`
-	QueryString QueryString `json:"query_string"`
+	SimpleQueryString *QueryString `json:"simple_query_string"`
+	QueryString *QueryString `json:"query_string"`
 }
