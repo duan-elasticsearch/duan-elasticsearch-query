@@ -8,6 +8,7 @@ type Subnode struct {
 	MatchPhrase interface{} `json:"match_phrase,omitempty"`
 	MatchAll interface{} `json:"match_all,omitempty"`
 	Wildcard interface{} `json:"wildcard,omitempty"`
+	Regexp interface{} `json:"regexp,omitempty"`
 
 	Range interface{} `json:"range,omitempty"`
 }
