@@ -12,14 +12,6 @@ type Query struct {
 
 	Range interface{} `json:"range,omitempty"`
 
-	SimpleQueryString struct {
-		Query string `json:"query,omitempty"`
-		Fields []string `json:"fields,omitempty"`
-		DefaultOperator string `json:"default_operatior,omitempty"`
-	} `json:"simple_query_string"`
-	QueryString struct {
-		Query string `json:"query,omitempty"`
-		Fields []string `json:"fields,omitempty"`
-		DefaultOperator string `json:"default_operatior,omitempty"`
-	} `json:"query_string"`
+	SimpleQueryString QueryString `json:"simple_query_string"`
+	QueryString QueryString `json:"query_string"`
 }
