@@ -16,11 +16,14 @@ type QueryResponseHitsOne struct {
 }
 
 type QueryResponse struct {
-	Took     int64 `json:"took,omitempty"`
-	TimedOut bool  `json:"timed_out,omitempty"`
-	Shards   struct {
+	ScrollId        string `json:"_scroll_id,omitempty"`
+	Took            int64  `json:"took,omitempty"`
+	TimedOut        bool   `json:"timed_out,omitempty"`
+	TerminatedEarly bool   `json:"terminated_early,omitempty"`
+	Shards          struct {
 		Total      int64 `json:"total,omitempty"`
 		Successful int64 `json:"successful,omitempty"`
+		Skipped    int64 `json:"skipped,omitempty"`
 		Failed     int64 `json:"failed,omitempty"`
 	} `json:"_shards,omitempty"`
 	Hits struct {
