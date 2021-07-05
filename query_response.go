@@ -35,6 +35,7 @@ type QueryResponse struct {
 		MaxScore float64                `json:"max_score,omitempty"`
 		Hits     []QueryResponseHitsOne `json:"hits,omitempty"`
 	} `json:"hits,omitempty"`
+	Aggregations json.RawMessage `json:"aggregations,omitempty"`
 }
 
 func (self *QueryResponse) CoverSource(demoType reflect.Type) (err error) {
