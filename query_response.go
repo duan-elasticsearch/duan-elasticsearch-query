@@ -14,6 +14,7 @@ type QueryResponseHitsOne struct {
 	Source    json.RawMessage        `json:"_source,omitempty"`
 	SourceObj interface{}            `json:"_source_obj,omitempty"`
 	Highlight map[string]interface{} `json:"highlight,omitempty"`
+	Fields    map[string]interface{} `json:"fields,omitempty"`
 }
 
 type QueryResponse struct {
