@@ -9,6 +9,7 @@ type Subnode struct {
 	MatchAll    interface{} `json:"match_all,omitempty"`
 	Wildcard    interface{} `json:"wildcard,omitempty"`
 	Exists      interface{} `json:"exists,omitempty"`
+	Nested      interface{} `json:"nested,omitempty"`
 
 	Range interface{} `json:"range,omitempty"`
 }

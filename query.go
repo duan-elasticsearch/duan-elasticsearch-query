@@ -10,6 +10,7 @@ type Query struct {
 	Wildcard    interface{} `json:"wildcard,omitempty"`
 	Exists      interface{} `json:"exists,omitempty"`
 	Regexp      interface{} `json:"regexp,omitempty"`
+	Nested      interface{} `json:"nested,omitempty"`
 
 	Range interface{} `json:"range,omitempty"`
 
